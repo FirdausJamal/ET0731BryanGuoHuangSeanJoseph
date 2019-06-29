@@ -52,9 +52,12 @@ Failure to comply with 7. will result in the account losing its authorised statu
 
 There are two ways for the person to enter the house. One of the ways is to scan the QR code on the door. Another way is to remotely unlock the door.
 
-As of the QR code, the user will need to scan the QR code and this will bring the user to a web app. In the web app, the user will need to sign in into his/her account to check whether it is an authorised account to access the house. When signing into the account, the user will need to provide their username and password. After that, they will receive an OTP in their email. Next, they need to key in the OTP into the web app. If the OTP entered is correct, the door will be unlocked. If the authentication process fails, the door will not be unlocked. The user can now use another way to gain access to the house.
+1. Scanning of QR code on the door.
+    The user will need to scan the QR code and this will bring the user to a web app. In the web app, the user will need to sign in into his/her account to check whether it is an authorised account to access the house. When signing into the account, the user will need to provide their username and password. After that, they will receive an OTP in their email. Next, they need to key in the OTP into the web app. If the OTP entered is correct, the door will be unlocked. If the authentication process fails, the door will not be unlocked. The user can now use another way to gain access to the house.
 
-Another way to enter the house is to allow the owner to remotely unlock the door for the user. In order for the owner to get notified, the user will need to press the doorbell. This doorbell will send a post to the web app to notify the owner that someone is outside the door. When the owner is notified, he can use the surveillance camera at the door to verify the person. If the owner knows the person, he can open the door remotely using the web app. On the other hand, if the owner does recognize the user, he can choose to keep the door unlocked.
+2. Remotely unlock the door.
+    To allow any user to enter the house, the owner has to remotely unlock the door for the user. In order for the owner to get notified, the user must press the doorbell. This doorbell will send a POST request to the Web App to notify the owner that someone is outside the door. When the owner is notified, he can use the surveillance camera at the door to verify the person. If the owner knows the person, he can open the door remotely using the web app. On the other hand, if the owner does recognize the user, he can choose to keep the door locked.
+
 
 ## Required Build Materials and BOM
 
