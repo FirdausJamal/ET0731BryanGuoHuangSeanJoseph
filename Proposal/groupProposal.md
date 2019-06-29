@@ -59,7 +59,7 @@ Another way to enter the house is to allow the owner to remotely unlock the door
 ## Required Build Materials and BOM
 
 | Item | Price | Link to Product|
----------------------------------
+| ---- | :---: | :------------- |
 | Electromagnetic Lock | $6.33 | https://ezbuy.sg/product/51000568137309.html?skuid=3904243333001&gclid=CjwKCAjwmNzoBRBOEiwAr2V27aQmMgZiTyEzBpH_GDnSALyFF7aMA6kKYmzbhUsMpn4zxzJZQHqQHRoCdFYQAvD_BwE|
 | NodeMCU (Door control and keypad control) | (Provided) | (Provided) |
 | Buzzer | $1.66 | https://shopee.sg/5V-Piezo-Sounders-Passive-Buzzer-Component-for-Arduino-MINI-Alarm-Speaker-i.14646941.273727026?gclid=CjwKCAjwmNzoBRBOEiwAr2V27QDGyrWOMaXJE6IMLWImVjgbN2Nk1HD_gt-EoVhFCIbXitHYKaxspxoCYiUQAvD_BwE |
