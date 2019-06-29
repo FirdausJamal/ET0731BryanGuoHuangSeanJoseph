@@ -59,7 +59,7 @@ There are two ways for the person to enter the house. One of the ways is to scan
     To allow any user to enter the house, the owner has to remotely unlock the door for the user. In order for the owner to get notified, the user must press the doorbell. This doorbell will send a POST request to the Web App to notify the owner that someone is outside the door. When the owner is notified, he can use the surveillance camera at the door to verify the person. If the owner knows the person, he can open the door remotely using the web app. On the other hand, if the owner does recognize the user, he can choose to keep the door locked.
 
 
-## Required Build Materials and BOM
+## Required Build Materials
 
 | Item | Price | Link to Product|
 | ---- | :---: | :------------- |
