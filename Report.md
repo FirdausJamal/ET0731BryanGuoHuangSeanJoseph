@@ -33,12 +33,39 @@ The owner will have to create an account on the Lock Smart website and link the 
 
 
 ## 4: TR 64 Reference
-IoT Threat assessment:
-System Susceptibility:
-Physical Tampering
-Social Engineering
+- Cryptographic support:
+  - CS-01 (A proper random number generation should be employed)
+- Identification and authentication:
+  - IA-01 (Client and server credentials should be stored securely eg salted,hashed or encrypted)
+  - IA-03 (Unique, non-modifiable and verifiable identities should be established for clients and server)
+- Network protection:
+- Data protection:
+  - DP-03 (Input Validation to guard against vulnerabilities should be implemented)
+- Access protection:
+  - AP-01 (A lockout mechanism should be implemented to protect against repeated unauthorised attempts)
+  - AP-02 (Multi-factor authentication should be employed for impactful operations) 
+  - AP-03 (Physical access restriction should be implemented to protect against unauthorised access to a device’s physical interface)
+- Security management:
+  - MT-01 (A strong password policy for user access should be enforced)
+- Resiliency support:
+  - RS-03 (System should be able to withstand malicious attacks)
+  - RS-04 (Regular backup of system data including settings and disaster recovery exercise should be conducted)
+- Security Audit:
+  - AU-01 (Significant events should be recorded with enough information regarding activities performed)
+- Lifecycle protection:
+  - LP-01 (Threat modeling should be conducted to identify and analyse threats to an Iot system)
+  - LP-02 (System should be designed and developed using secure systems engineering approach and best practices)
 
-System accessibility
-Attacker Capability
+
+
+
+- IoT Threat assessment:
+- System Susceptibility:
+  - Physical Tampering
+  - Social Engineering
+
+- System accessibility
+- Attacker Capability
+
 
 ## 5: Security Testing
