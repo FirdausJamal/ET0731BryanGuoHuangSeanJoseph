@@ -1,14 +1,14 @@
 // Create sendEmail params 
 
-function sendEmail(senderEmail, receipientEmail, CCEmail, messageSubject){
+function sendEmail(senderEmail = "locksmart0731@gmail.com", receipientEmail = "bryantee1998@gmail.com", CCEmail="bryanteepakhong.17@ichat.sp.edu.sg", messageSubject="Test Message"){
 var params = {
     Destination: { /* required */
       CcAddresses: [
-        'EMAIL_ADDRESS',
+        CCEmail,
         /* more items */
       ],
       ToAddresses: [
-        'EMAIL_ADDRESS',
+        receipientEmail,
         /* more items */
       ]
     },
@@ -25,23 +25,23 @@ var params = {
        },
        Subject: {
         Charset: 'UTF-8',
-        Data: 'Test email'
+        Data: messageSubject
        }
       },
-    Source: 'SENDER_EMAIL_ADDRESS', /* required */
-    ReplyToAddresses: [
-       'EMAIL_ADDRESS',
-      /* more items */
-    ],
+    Source: senderEmail /* required */
   };
   
   // Create the promise and SES service object
-  var sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
+  var ses = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
   
   // Handle promise's fulfilled/rejected states
-  sendPromise.then(
+  ses.then(
     function(data) {
       console.log(data.MessageId);
+      ses.sendEmail(params, function(err, data){
+          if (err) console.log(err, err.stack);
+          else console.log(data);
+      });
     }).catch(
       function(err) {
       console.error(err, err.stack);
