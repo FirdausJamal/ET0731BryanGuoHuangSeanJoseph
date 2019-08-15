@@ -7,6 +7,10 @@ Team:
 - P1719518 Sean Lau Wai Chuan
 
 
-<a href = "Proposal/groupProposal.md"> Our group proposal </a>\n
-<a href = "Report.md"> Our final report </a>\n
-<a href = "TR64 compliance checklist.md"> Our Compliance Checklist documentation </a> \n
+<a href = "Proposal/groupProposal.md"> Our group proposal </a>
+
+
+<a href = "Report.md"> Our final report </a>
+
+
+<a href = "TR64 compliance checklist.md"> Our Compliance Checklist documentation </a> 
