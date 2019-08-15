@@ -19,11 +19,12 @@ router.get('/', function (req, res, next) {
   res.render('loginPage', { title: 'Login' });
 });
 
-router.post('/login', function (req, res, next) {
+router.post('/controlPage', function (req, res, next) {
   var sess = req.session;
   sess.username = req.body.Username;
   var password = req.body.Password;
   const db = require("../database");
+  const device = require("../awsIot");
   console.log(sess.username);
 
 
@@ -37,6 +38,9 @@ router.post('/login', function (req, res, next) {
       bcrypt.compare(password, pass, function (error, response) {
         if (response === true) {
           console.log("password match")
+          device.on('connect', function () {
+            console.log('connected');
+          });
           res.render('controlPage', { title: "Key Selection" });
         } else {
           console.log("does not match")
@@ -51,14 +55,14 @@ router.get('/register', function (req, res, next) {
   res.render('signupPage', { title: 'Register' });
 });
 
-router.post('/registerPost', function (req, res, next) {
+router.post('/loginPost', function (req, res, next) {
 
   var username = req.body.Username;
   var email = req.body.Email;
   var password = req.body.Password;
   const db = require("../database");
   bcrypt.hash(password, saltRound, function (error, hash) {
-    db.query("SELECT username, email FROM account WHERE username = ? OR email = ?", [sess.username, email], function (error, result, fields) {
+    db.query("SELECT username, email FROM account WHERE username = ? OR email = ?", [username, email], function (error, result, fields) {
       if (error) return next(error);
       if (result.length == 0) { //  if there is no such row in the database
         db.query("INSERT INTO account (username, email, password) VALUES (?, ?, ?)", [username, email, hash], function (error, result, field) {
@@ -72,7 +76,7 @@ router.post('/registerPost', function (req, res, next) {
   });
 });
 
-router.post('/controlPage', function (req, res, next) {
+router.post('/otpPost', function (req, res, next) {
   var sess = req.session;
   var userEmail;
   const device = require("../awsIot");
@@ -82,60 +86,50 @@ router.post('/controlPage', function (req, res, next) {
   db.query("SELECT username, email FROM account where username = ?", [sess.username], function (error, results, field) {
     if (error) return next(error);
     console.log("before ", results);
-    userEmail = results[0].email;
+    //userEmail = results[0].email;
     console.log("after ", userEmail);
+    ootp = randomOtp.toString();
+    ootpStringified = JSON.stringify({ otpFromWebserver: ootp });
+    device.publish('OTP/G', ootp);
+    sendEmail(senderEmail = "locksmart0731@gmail.com", receipientEmail = results[0].email, CCEmail = "bryanteepakhong.17@ichat.sp.edu.sg", messageSubject = "An OTP Request has been made", messageBody = ootp);
+    console.log('working?');
   });
 
-  device
-    .on('connect', function () {
-      console.log('connect');
-      //device.subscribe('topic/sub/otp');
-      ootp = randomOtp.toString();
-      ootpStringified = JSON.stringify({ otpFromWebserver: ootp });
-      device.publish('OTP/G', ootp);
-      console.log('success');
-      sendEmail(senderEmail = "locksmart0731@gmail.com", receipientEmail = userEmail, CCEmail = "bryanteepakhong.17@ichat.sp.edu.sg", messageSubject = "An OTP Request has been made", messageBody = ootp);
-    });
+  // device.on('connect', function () {
+  //   console.log('connect');
+  //   device.publish('test');
+  // });
+
 
 
   device
     .on('message', function (topic, payload) {
       console.log('message', topic, payload.toString());
     });
-
-  res.render('otp', { title: "OTP" })
+  res.render('otp', { title: "OTP" });
 });
 
-router.post('/otpPost', function (req, res, next) {
+router.post('/logOut', function (req, res, next) {
 
   var otp = req.body.otp;
-
   const device = require("../awsIot");
 
   console.log('connect2');
   //device.subscribe('topic/sub/otp');
   device.publish('OTP/R', JSON.stringify({ otpFromUser: otp }));
-  ootp = "";
-  device.publish('OTP/G', ootp);
   console.log('success2');
-
 
   device
     .on('message', function (topic, payload) {
       console.log('message', topic, payload.toString());
+
+      req.session.destroy(function (err) {
+        if (err) {
+          return console.log(err);
+        }
+      });
     });
-
   res.render('accessGranted.hbs', { title: "access granted!" });
-
-});
-
-router.post('/logOut', function (req, res, next) {
-  req.session.destroy(function (err) {
-    if (err) {
-      return console.log(err);
-    }
-    res.redirect('/');
-  });
 });
 
 
