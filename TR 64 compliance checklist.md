@@ -46,10 +46,10 @@ No exposure of session key, token etc **[done]**
     
 ## Attack Surface 4; System as a whole
 ### Checklist:
-- TR 64 : LP-01 
+- TR 64 : LP-01  **[done]**
     - Conducted threat modeling to identify threats
     The team used the STRIDE tool to identify threats on the network architecture, which then led to this compliance checklist. 
     
 - TR 64 : LP-02 
-    - System designed in a secure way
+    - System designed in a secure way **[done]**
     All HTTP and MQTT versions of the web app has been changed to HTTPS and MQTTS, some prototyping ideas such as ESP32 web server has also been abolished in order to decerase attack surface
