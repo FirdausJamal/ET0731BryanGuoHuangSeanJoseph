@@ -35,7 +35,7 @@ few troubleshooting sessions we still couldn't get a screenshot similar to the g
 Below are some screenshots of our attacking process:
 
 <img src = "Img/airodump.png"/>
-<img src = "Img/wdk2.png"/>
+<img src = "Img/wdk3.png"/>
 <img src = "Img/airodumpWPA.png"/>
 <img src = "Img/network key compromised.png"/>
 <img src = "Img/allPacket.png"/>
