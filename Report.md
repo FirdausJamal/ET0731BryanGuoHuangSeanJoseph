@@ -91,7 +91,7 @@ The owner has to access the Lock Smart Web App. In the Web App, the user will ne
 Attack Surface|CheckList|TR64 Reference|Description
 --------------|---------|--------------|-----------
 Web App|Data is sent over secure protocols, No exposure of session key, token etc|RS-03, IA-01|Can withstand malicious attacks, User credentials are salted and hashed
-Web Server|Secured login using 2FA, Secure from SQL injections, Data is not stored in clear text, Secure Communications|AP-02, CS-01, DP-03, DP-01, RS-03|2 Factor Authentication with email, Proper random number generation is employed for OTP, Program was coded in a way to prevent SQL injections, User password is salted and hashed, Server uses HTTPS
+Web Server|Secured login using 2FA, Data is not stored in clear text, Secure Communications|AP-02, CS-01, DP-03, RS-03|2 Factor Authentication with email, Proper random number generation is employed for OTP, User password is salted and hashed, Server uses HTTPS
 ESP32|Tamper-proof Enclosure, No exposed joints/connectors to open device, Secure Communications|AP-04, AP-03, RS-03|Enclosure is not easily tampered with, Exposed ports are sealed off, ESP32 uses MQTTS
 Entire System|Identify and analyse threats to an Iot system, System designed in a secure way, System should be able to withstand malicious attacks|LP-01, LP-02, RS-03|Conducted threat modeling to identify threats, System is designed and developed using secure systems engineering approach and best practices, System uses necessary protocols to withstand malicious attacks
 
