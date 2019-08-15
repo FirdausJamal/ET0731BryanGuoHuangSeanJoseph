@@ -5,13 +5,13 @@ var AWS = require('aws-sdk');
 const session = require('express-session');
 var randomOtp = Math.floor(100000 + Math.random() * 900000);
 
-router.use(session({secret: 'ssshhhhh'}));
+router.use(session({ secret: 'ssshhhhh' }));
 
 //Global variables
 const saltRound = 10;
 var ootp;
 
-AWS.config.update({region: "us-east-1"});
+AWS.config.update({ region: "us-east-1" });
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 /* GET home page. */
@@ -20,13 +20,13 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/login', function (req, res, next) {
-  var sess=req.session;
+  var sess = req.session;
   sess.username = req.body.Username;
   var password = req.body.Password;
   const db = require("../database");
   console.log(sess.username);
-  
-  
+
+
   db.query("SELECT username, password FROM account WHERE username = ?", [sess.username], function (error, result, field) {
     if (error) return next(error);
     if (result.length == 0) {
@@ -52,7 +52,7 @@ router.get('/register', function (req, res, next) {
 });
 
 router.post('/registerPost', function (req, res, next) {
-  
+
   var username = req.body.Username;
   var email = req.body.Email;
   var password = req.body.Password;
@@ -77,13 +77,13 @@ router.post('/controlPage', function (req, res, next) {
   var userEmail;
   const device = require("../awsIot");
   const db = require("../database");
-  console.log("test ",sess.username);
-  
-  db.query("SELECT username, email FROM account where username = ?", [sess.username], function(error, results, field){
+  console.log("test ", sess.username);
+
+  db.query("SELECT username, email FROM account where username = ?", [sess.username], function (error, results, field) {
     if (error) return next(error);
-    console.log("before ",results);
+    console.log("before ", results);
     userEmail = results[0].email;
-    console.log("after ",userEmail);
+    console.log("after ", userEmail);
   });
 
   device
@@ -91,12 +91,12 @@ router.post('/controlPage', function (req, res, next) {
       console.log('connect');
       //device.subscribe('topic/sub/otp');
       ootp = randomOtp.toString();
-      ootpStringified = JSON.stringify({ otpFromWebserver : ootp });
+      ootpStringified = JSON.stringify({ otpFromWebserver: ootp });
       device.publish('OTP/G', ootp);
       console.log('success');
-      sendEmail(senderEmail = "locksmart0731@gmail.com", receipientEmail = userEmail, CCEmail="bryanteepakhong.17@ichat.sp.edu.sg", messageSubject="An OTP Request has been made", messageBody=ootp);
+      sendEmail(senderEmail = "locksmart0731@gmail.com", receipientEmail = userEmail, CCEmail = "bryanteepakhong.17@ichat.sp.edu.sg", messageSubject = "An OTP Request has been made", messageBody = ootp);
     });
-    
+
 
   device
     .on('message', function (topic, payload) {
@@ -112,12 +112,13 @@ router.post('/otpPost', function (req, res, next) {
 
   const device = require("../awsIot");
 
-      console.log('connect2');
-      //device.subscribe('topic/sub/otp');
-      device.publish('OTP/R', JSON.stringify({ otpFromUser : otp }));
-      ootp="";
-      console.log('success2');
-    
+  console.log('connect2');
+  //device.subscribe('topic/sub/otp');
+  device.publish('OTP/R', JSON.stringify({ otpFromUser: otp }));
+  ootp = "";
+  device.publish('OTP/G', ootp);
+  console.log('success2');
+
 
   device
     .on('message', function (topic, payload) {
@@ -127,51 +128,62 @@ router.post('/otpPost', function (req, res, next) {
   res.render('accessGranted.hbs', { title: "access granted!" });
 
 });
+
+router.post('/logOut', function (req, res, next) {
+  req.session.destroy(function (err) {
+    if (err) {
+      return console.log(err);
+    }
+    res.redirect('/');
+  });
+});
+
+
 module.exports = router;
 
 
 // Create sendEmail params 
 
-function sendEmail(senderEmail = "locksmart0731@gmail.com", receipientEmail = "bryantee1998@gmail.com", CCEmail="bryanteepakhong.17@ichat.sp.edu.sg", messageSubject="Test Message", messageBody="This is a Test message"){
+function sendEmail(senderEmail = "locksmart0731@gmail.com", receipientEmail = "bryantee1998@gmail.com", CCEmail = "bryanteepakhong.17@ichat.sp.edu.sg", messageSubject = "Test Message", messageBody = "This is a Test message") {
   var params = {
-      Destination: { /* required */
-        CcAddresses: [
-          CCEmail,
-          /* more items */
-        ],
-        ToAddresses: [
-          receipientEmail,
-          /* more items */
-        ]
-      },
-      Message: { /* required */
-        Body: { /* required */
-          Html: {
-           Charset: "UTF-8",
-           Data: messageBody
-          },
-          Text: {
-           Charset: "UTF-8",
-           Data: "TEXT_FORMAT_BODY"
-          }
-         },
-         Subject: {
-          Charset: 'UTF-8',
-          Data: messageSubject
-         }
+    Destination: { /* required */
+      CcAddresses: [
+        CCEmail,
+        /* more items */
+      ],
+      ToAddresses: [
+        receipientEmail,
+        /* more items */
+      ]
+    },
+    Message: { /* required */
+      Body: { /* required */
+        Html: {
+          Charset: "UTF-8",
+          Data: messageBody
         },
-      Source: senderEmail /* required */
-    };
-    
-    // Create the promise and SES service object
-    var ses = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
-    
-    // Handle promise's fulfilled/rejected states
-    ses.then(
-      function(data) {
-        console.log(data.MessageId);
-      }).catch(
-        function(err) {
+        Text: {
+          Charset: "UTF-8",
+          Data: "TEXT_FORMAT_BODY"
+        }
+      },
+      Subject: {
+        Charset: 'UTF-8',
+        Data: messageSubject
+      }
+    },
+    Source: senderEmail /* required */
+  };
+
+  // Create the promise and SES service object
+  var ses = new AWS.SES({ apiVersion: '2010-12-01' }).sendEmail(params).promise();
+
+  // Handle promise's fulfilled/rejected states
+  ses.then(
+    function (data) {
+      console.log(data.MessageId);
+    }).catch(
+      function (err) {
         console.error(err, err.stack);
       });
-  }
+}
