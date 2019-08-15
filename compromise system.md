@@ -35,9 +35,29 @@ few troubleshooting sessions we still couldn't get a screenshot similar to the g
 Below are some screenshots of our attacking process:
 
 <img src = "Img/airodump.png"/>
-<img src = "Img/wdk3.png"/>
+
+This image is us trying out the airodump commands
+
+<img src = "mdk3.png"/>
+
+We later proceed to deauthenticate a user in attempt to compromise the network key
+
 <img src = "Img/airodumpWPA.png"/>
+
+observing the result of airodump.
+
 <img src = "Img/network key compromised.png"/>
+
+we got the WPA handshake!
+
 <img src = "Img/allPacket.png"/>
+
+These are all the packets we managed to see.
+
 <img src = "Img/http.png"/>
+
+There's nothing in HTTP despite our repeated tries...
+
 <img src = "Img/mqtt.png"/>
+
+Same with MQTT, we couldn't see anything from wireshark.
