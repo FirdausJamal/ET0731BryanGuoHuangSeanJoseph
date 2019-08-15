@@ -26,6 +26,11 @@ Lock Smart does not boast a wide range of methods to unlock it, unlike other loc
 ### 2.1: Electromagnetic Lock
 An electromagnetic lock was chosen as it is difficult to tamper with. It may require expensive or complex equipment to unlock, which may be more difficult for the average person to acquire or operate. This reduces the likelihood of unauthorized access, while being highly available for authorized users. 
 
+- Outside of device: 
+![Outside of device](/Img/Prototype_picture_1.jpeg)
+- Inside of device:
+![Inside of device](/Img/Prototype_picture_2.jpeg)
+
 ### 2-Factor Authentication
 A user can unlock Lock Smart by scanning the unique QR code provided with the Lock Smart set. This QR code will redirect the user to a web page. They must log into the web page with their Lock Smart account. If their account has been successfully logged into, a One-Time Pin (OTP) will be sent to their email. The user must then enter the OTP to the field provided on the Lock Smart Web App. If the generated OTP matches the user-entered OTP, Lock Smart will unlock. 
 
@@ -34,12 +39,23 @@ A user can unlock Lock Smart by scanning the unique QR code provided with the Lo
 ### 2.3: Email Alerts via AWS SES
 Every time an OTP is generated, an email is sent to the owner to inform him. This ensures that the owner is able to monitor the status of his Lock Smart wherever he goes as long as he has access to the internet. It also allows the owner to view suspicious activity such as the attempted unlocking of Lock Smart at odd hours. This gives the owner the ability to deduce if something wrong is happening and allows him to check with the necessary parties (family, friends) before contacting the authorities.
 
+- Screenshot of email:
+![Screenshot of email](Img/email.png)
+
 ### 2.4: 2-Factor Authentication
 A user can unlock Lock Smart by scanning the unique QR code provided with the Lock Smart set. This QR code will redirect the user to a web page. They must log into the web page with their Lock Smart account. If their account has been successfully logged into, a One-Time Pin (OTP) will be sent to their email. The user must then enter the OTP to the field provided on the Lock Smart Web App. If the generated OTP matches the user-entered OTP, Lock Smart will unlock. 
 
 
 ## 3: Network Diagram
 As seen from the above 2 diagrams, the unlocking procedure for Lock Smart follows a simple step by step process that is completed within a minute. A more in-depth walkthrough is detailed in section 4
+
+- Network Diagram:
+![Network Diagram](https://github.com/SpdPnd98/ET0731BryanGuoHuangSeanJoseph/blob/master/Img/Network%20Diagram.jpeg)
+- Timing Diagram:
+![Timing Diagram](https://github.com/SpdPnd98/ET0731BryanGuoHuangSeanJoseph/blob/master/Img/Timing%20Diagram.jpeg)
+
+
+
 
 ## 4: User Journey
 	This section covers the steps required to set up and used the Lock Smart device.
@@ -53,6 +69,23 @@ As Amazon Simple Email Service is used to send emails to authorized users, they 
 
 ### 4.3: Using Lock Smart
 The owner has to access the Lock Smart Web App. In the Web App, the user will need to sign in using their username and password. After that, they will receive an OTP in their email. Next, they key in the OTP into the given field and if the entered OTP is correct, Lock Smart will be unlocked. If the authentication process fails, the Lock Smart will stay locked.
+
+- Log in page on server:
+![Log in page](Img/OTP1.jpeg)
+
+- Page after logging in to request OTP:
+![Page after logging in to request OTP](Img/OTP2.jpeg)
+
+- Page to enter otp received from email:
+![Page to enter otp received from email](Img/OTP3.jpeg)
+
+
+- Log out page after entering OTP:
+![Log out page after entering OTP](Img/OTP4.jpeg)
+
+
+- Circuit Diagram:
+![Circuit Diagram](Img/circuitIOTS.jpg)
 
 ## 5: Compliance Checklist
 Attack Surface|CheckList|TR64 Reference|Description
