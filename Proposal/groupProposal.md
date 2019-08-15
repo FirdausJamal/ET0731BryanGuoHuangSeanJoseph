@@ -10,17 +10,19 @@ Lock Smart is a reliable lock that can be unlocked remotely, either through mobi
 	
 We have referred to the IoT security requirement Category of Technical Reference 64 (TR64) while designing the features of our system. We have decided to consider three main factors while designing this product - Data Protection (DP), Access Protection (AP) and Security Management (MT). Some of these may depend on other basic categories, and as such may be required to reference to in the future.
 
-  ### Electromagnetic Lock with Smart Alarm System
+### Electromagnetic Lock with Smart Alarm System
   - Difficult to tamper with
   - Strong locking mechanism
-  ### 2-Factor Authentication
+### 2-Factor Authentication
   - Prevents unauthorized access even if account is hijacked
-  ### Email Alerts via AWS SES
+### Email Alerts via AWS SES
   - Track Activity of OTPs
   - 24/7 as long as device receiving emails has internet access
-  ### Cross-platform Web Dashboard (OWASP style, refer to ANNEX B1 of TR64)
+### Cross-platform Web Dashboard (OWASP style, refer to ANNEX B1 of TR64)
   - Access via phones
   - Access via computers
+ 
+
 
 
 
