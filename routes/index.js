@@ -1,13 +1,18 @@
 var express = require('express'); //  include middleware
 var router = express.Router();
 var bcrypt = require('bcrypt');
+var AWS = require('aws-sdk');
+const session = require('express-session');
 var randomOtp = Math.floor(100000 + Math.random() * 900000);
-var sendEmail = require("../")
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+router.use(session({secret: 'ssshhhhh'}));
 
+//Global variables
 const saltRound = 10;
+var ootp;
 
+AWS.config.update({region: "us-east-1"});
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -15,12 +20,14 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/login', function (req, res, next) {
-  var username = req.body.Username;
+  var sess=req.session;
+  sess.username = req.body.Username;
   var password = req.body.Password;
-
   const db = require("../database");
-
-  db.query("SELECT username, password FROM account WHERE username = ?", [username], function (error, result, field) {
+  console.log(sess.username);
+  
+  
+  db.query("SELECT username, password FROM account WHERE username = ?", [sess.username], function (error, result, field) {
     if (error) return next(error);
     if (result.length == 0) {
       res.render('loginPage', { title: "Login", error: "Sorry this username does not exist" });
@@ -45,14 +52,13 @@ router.get('/register', function (req, res, next) {
 });
 
 router.post('/registerPost', function (req, res, next) {
+  
   var username = req.body.Username;
   var email = req.body.Email;
   var password = req.body.Password;
-
   const db = require("../database");
-
   bcrypt.hash(password, saltRound, function (error, hash) {
-    db.query("SELECT username, email FROM account WHERE username = ? OR email = ?", [username, email], function (error, result, fields) {
+    db.query("SELECT username, email FROM account WHERE username = ? OR email = ?", [sess.username, email], function (error, result, fields) {
       if (error) return next(error);
       if (result.length == 0) { //  if there is no such row in the database
         db.query("INSERT INTO account (username, email, password) VALUES (?, ?, ?)", [username, email, hash], function (error, result, field) {
@@ -67,16 +73,28 @@ router.post('/registerPost', function (req, res, next) {
 });
 
 router.post('/controlPage', function (req, res, next) {
-
+  var sess = req.session;
+  var userEmail;
   const device = require("../awsIot");
+  const db = require("../database");
+  console.log("test ",sess.username);
+  
+  db.query("SELECT username, email FROM account where username = ?", [sess.username], function(error, results, field){
+    if (error) return next(error);
+    console.log("before ",results);
+    userEmail = results[0].email;
+    console.log("after ",userEmail);
+  });
 
   device
     .on('connect', function () {
       console.log('connect');
       //device.subscribe('topic/sub/otp');
-      device.publish('OTP/G', JSON.stringify({ otpFromWebserver : randomOtp }));
+      ootp = randomOtp.toString();
+      ootpStringified = JSON.stringify({ otpFromWebserver : ootp });
+      device.publish('OTP/G', ootp);
       console.log('success');
-      sendEmail();
+      sendEmail(senderEmail = "locksmart0731@gmail.com", receipientEmail = userEmail, CCEmail="bryanteepakhong.17@ichat.sp.edu.sg", messageSubject="An OTP Request has been made", messageBody=ootp);
     });
     
 
@@ -97,6 +115,7 @@ router.post('/otpPost', function (req, res, next) {
       console.log('connect2');
       //device.subscribe('topic/sub/otp');
       device.publish('OTP/R', JSON.stringify({ otpFromUser : otp }));
+      ootp="";
       console.log('success2');
     
 
@@ -113,7 +132,7 @@ module.exports = router;
 
 // Create sendEmail params 
 
-function sendEmail(senderEmail = "locksmart0731@gmail.com", receipientEmail = "bryantee1998@gmail.com", CCEmail="bryanteepakhong.17@ichat.sp.edu.sg", messageSubject="Test Message"){
+function sendEmail(senderEmail = "locksmart0731@gmail.com", receipientEmail = "bryantee1998@gmail.com", CCEmail="bryanteepakhong.17@ichat.sp.edu.sg", messageSubject="Test Message", messageBody="This is a Test message"){
   var params = {
       Destination: { /* required */
         CcAddresses: [
@@ -129,7 +148,7 @@ function sendEmail(senderEmail = "locksmart0731@gmail.com", receipientEmail = "b
         Body: { /* required */
           Html: {
            Charset: "UTF-8",
-           Data: "HTML_FORMAT_BODY"
+           Data: messageBody
           },
           Text: {
            Charset: "UTF-8",
@@ -151,10 +170,6 @@ function sendEmail(senderEmail = "locksmart0731@gmail.com", receipientEmail = "b
     ses.then(
       function(data) {
         console.log(data.MessageId);
-        ses.sendEmail(params, function(err, data){
-            if (err) console.log(err, err.stack);
-            else console.log(data);
-        });
       }).catch(
         function(err) {
         console.error(err, err.stack);
