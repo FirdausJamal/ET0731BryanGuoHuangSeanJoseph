@@ -56,7 +56,7 @@ Entire System|Identify and analyse threats to an Iot system, System designed in 
 ## 6: Required Build Materials
 Item|Price|Link to product
 ----|-----|---------------
-Solenoid, DC 12V, 2.1 kg Force, 10 mm|$15.68|[Link](https://www.amazon.com/Uxcell-a14032200ux0084-Electric-Electromagnet-Solenoid/dp/B00LBQ229Y/ref=nav_signin?_en)coding=UTF8&psc=1&refRID=44YNTX0M0WSA7KJVY267&)
+Solenoid, DC 12V, 2.1 kg Force, 10 mm|$15.68|[Link](https://www.amazon.com/Uxcell-a14032200ux0084-Electric-Electromagnet-Solenoid/dp/B00LBQ229Y/ref=nav_signin?_encoding=UTF8&psc=1&refRID=44YNTX0M0WSA7KJVY267&)
 Buck Converter|$2.92|[link](https://www.amazon.com/LM2596-Converter-3-0-40V-1-5-35V-Supply/dp/B01GJ0SC2C/ref=sr_1_3?keywords=buck+converter&qid=1565874931&s=gateway&sr=8-3)
 ESP32|$9.50|[Link](https://www.amazon.com/KeeYees-Development-Bluetooth-Microcontroller-ESP-WROOM-32/dp/B07QCP2451/ref=sr_1_4?keywords=esp32&qid=1565874868&s=gateway&sr=8-4)
 TIP110 Transistor|$1.92|[Link](https://www.amazon.com/LM2596-Converter-3-0-40V-1-5-35V-Supply/dp/B01GJ0SC2C/ref=sr_1_3?keywords=buck+converter&qid=1565874931&s=gateway&sr=8-3)
