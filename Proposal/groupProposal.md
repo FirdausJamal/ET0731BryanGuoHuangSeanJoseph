@@ -33,6 +33,9 @@ A normal lock requires the same key to be distributed to various members of the 
 
 As Lock Smart is part of the Internet of Things (IoT), it is definitely prone to online threats. This is something that IoT products cannot escape from due to the nature of such products. Hence, the only safe way to use IoT products without being compromised is by implementing comprehensive security to it. Lock Smart does so by using secure protocols such as HTTPS and MQTTS, salting and hashing of passwords in the database and encrypting data, just to name a few. These security implementations ensure that Lock Smart cannot be easily tempered with if done correctly.
 
+## Conclusion
+
+Lock Smart is a smart lock which aims to provide utmost convenience to its users while at the same time ensuring that it is not easily compromised by hackers and the like.
 
 
 
