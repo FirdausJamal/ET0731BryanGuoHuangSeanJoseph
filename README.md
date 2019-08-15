@@ -8,3 +8,5 @@ Team:
 
 
 <a href = "Proposal/groupProposal.md"> Our group proposal </a>
+<a href = "Report.md"> Our final report </a>
+<a href = "TR64 compliance checklist.md"> Our Compliance Checklist documentation </a> 
