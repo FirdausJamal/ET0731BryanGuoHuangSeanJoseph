@@ -35,7 +35,7 @@ No exposure of session key, token etc **[done]**
 
    - Secure Communications
    
-   The Web Server does not handle Rougue HTTP requests, but only respond to proper HTTPS requests, providing security by obscurity. All keys are stored in hidden dedicated folders in the server.
+     - The Web Server does not handle Rougue HTTP requests, but only respond to proper HTTPS requests, providing security by obscurity. All keys are stored in hidden dedicated folders in the server.
     
 ## Attack Surface  3: ESP32
 ### Checklist:
