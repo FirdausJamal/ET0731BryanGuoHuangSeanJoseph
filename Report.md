@@ -1,10 +1,21 @@
 # IoT Security Report
 # Contents
-1. Overview of Lock Smart
-2. Features of Lock Smart
-3. User Journey
-4. TR 64 References
-5. Security Testing
+### 1. Overview of Lock Smart - What is it?	
+### 2. Features of Lock Smart	
+- 2.1 Electromagnetic Lock	
+- 2.2 2-Factor Authentication	
+- 2.3 Email Alerts via AWS SES	
+- 2.4  Cross-platform Web Dashboard (OWASP style, refer to ANNEX B1 of TR64)	
+### 3. Network Diagram	
+### 4. User Journey	
+- 4.1 Setting Up Lock Smart	
+- 4.2 Verify Email	
+- 4.3 Using Lock Smart	
+### 5. Compliance Checklist	
+### 6. Required Build Materials	
+### 7. Potential Improvements	
+### 8. References	
+
 ## 1: Overview of Lock Smart
 Lock Smart is a reliable lock that can be unlocked remotely, either through mobile devices or computers. Lock Smart features advanced security protocols such as data encryption and 2-factor authentication. Due to the nature of such a device, it is part of the Internet of Things (IoT) that easily integrates into our home networks without being intrusive.
 ## 2: Features of Lock Smart 
