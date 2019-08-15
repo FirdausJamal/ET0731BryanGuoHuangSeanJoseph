@@ -12,15 +12,16 @@ A Checklist is important in assessing how secure the IoT based project is. Below
       Our system are hence more resistant to malicious attacks targetting the Confidentaility and Integrity of data.
 
 - TR 64 : IA-01
+
 No exposure of session key, token etc **[done]**
 
-    - The self signed certificate to implement SSL uses X.509 Certificate Authority. Encryption keys are stored locally in user files and difficut to 
-    access. All user credentials are salted and hashed using the bcrypt algorithm, passwords are never saved in clear text. 
+ - The self signed certificate to implement SSL uses X.509 Certificate Authority. Encryption keys are stored locally in user files and difficut to access. All user credentials are salted and hashed using the bcrypt algorithm, passwords are never saved in clear text. 
 
 
 ## Attack Surface 2: Web Server
 ### Checklist:
 - TR 64 : AP-02 & CS-01
+
     - Secured login using 2FA **[done]**
     
     The team has implemented 2FA to control the lock, first requiring a user sign-in and an OTP to be received from user registered email. We used the math Random function without seeding the value, then applying simple arithmetric encryption to represent the value in a 6 digit OTP format.
@@ -32,11 +33,11 @@ No exposure of session key, token etc **[done]**
 
 -TR 64 : RD-03 **[done]**
 
-    - Secure Communications
-    The Web Server does not handle Rougue HTTP requests, but only respond to proper HTTPS requests, providing security by obscurity. All keys are stored in hidden dedicated folders in the server.
+   - Secure Communications
+   The Web Server does not handle Rougue HTTP requests, but only respond to proper HTTPS requests, providing security by obscurity. All keys are stored in hidden dedicated folders in the server.
     
 ## Attack Surface  3: ESP32
-### CHecklist:
+### Checklist:
 - TR 64 : AP-04 **[done]**
 
     - Tamper-proof Enclosure
@@ -45,9 +46,11 @@ No exposure of session key, token etc **[done]**
 - TR 64 : AP-03 **[done with proof of concept]**
 
     - No exposed joints/conenctors to open devices 
+    
     The miro USB of the device is to stuffed with a residual MicroUSB head and hot glued to prevent easy access to rewrite firmware (materials prepared). The hardware serial is hot glued and pins are desoldered, making it difficult to access.
     
 - TR 64 : RS-03
+
     - Secure Communications **[done]**
     
     ESP32 is conencted to a local Access Point protected with WPA-PSK, and communicates with AWS-IoT via MQTTS.
@@ -60,6 +63,7 @@ No exposure of session key, token etc **[done]**
     The team used the STRIDE tool to identify threats on the network architecture, which then led to this compliance checklist. 
     
 - TR 64 : LP-02 
+
     - System designed in a secure way **[done]**
     
     All HTTP and MQTT versions of the web app has been changed to HTTPS and MQTTS, some prototyping ideas such as ESP32 web server has also been abolished in order to decerase attack surface
