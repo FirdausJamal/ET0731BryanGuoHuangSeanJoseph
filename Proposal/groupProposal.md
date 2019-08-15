@@ -1,8 +1,11 @@
 # Lock Smart Proposal
 
-## Overview of Lock Smart - What is it?
+## Why a Smart Lock?
 
 When in search of the best way to protect our houses, it has always been using a physical lock as it boasts simplicity and effectiveness. However, not all locks are made equal, and all of them require the analog presence of an authorized user, which are our family members. As we approach a more modern and competitive Singapore, the need of a smart system to remotely grant access to individuals we do not fully trust may be required, such as our babies’ nanny, package delivery man, friends etc.  How can we allow people to achieve this goal without breaking the bank, while maintaining digital and analog security? 
+
+
+## What is Lock Smart?
 
 Lock Smart is a reliable lock that can be unlocked remotely, either through mobile devices or computers, while allowing authorized users to use it as simple as traditional analog locks. Lock Smart features advanced security protocols such as data encryption and 2-factor authentication. Due to the nature of such a device, it is part of the Internet of Things (IoT) that easily integrates into our home networks without being intrusive. 
 
@@ -22,7 +25,13 @@ We have referred to the IoT security requirement Category of Technical Reference
   - Access via phones
   - Access via computers
  
+## Why not use a normal lock?
 
+A normal lock requires the same key to be distributed to various members of the household. This may seem like an easy task, but what if someone loses their keys? Sure, you could use a spare key if you have one hanging around or you could also engage the services of a locksmith. However, there is a better way to do this which is to simply have a Lock Smart account shared by the household. Since it is not a physical device, it cannot be physically lost. Also, since only members of the households know about the username and password, it cannot be easily replicated by potential housebreakers. Furthermore, a mobile device can be used to unlock Lock Smart remotely, meaning you can unlock it while going up the elevator or right before reaching your doorstep. This saves users the hassle of opening bags or fiddling around pockets to get the key out and slowly unlock a traditional lock.
+
+## What about security?
+
+As Lock Smart is part of the Internet of Things (IoT), it is definitely prone to online threats. This is something that IoT products cannot escape from due to the nature of such products. Hence, the only safe way to use IoT products without being compromised is by implementing comprehensive security to it. Lock Smart does so by using secure protocols such as HTTPS and MQTTS, salting and hashing of passwords in the database and encrypting data, just to name a few. These security implementations ensure that Lock Smart cannot be easily tempered with if done correctly.
 
 
 
