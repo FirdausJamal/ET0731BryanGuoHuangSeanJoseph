@@ -53,7 +53,7 @@ As seen from the above 2 diagrams, the unlocking procedure for Lock Smart follow
 ![Network Diagram](https://github.com/SpdPnd98/ET0731BryanGuoHuangSeanJoseph/blob/master/Img/Network%20Diagram.jpeg)
 - Timing Diagram:
 ![Timing Diagram](https://github.com/SpdPnd98/ET0731BryanGuoHuangSeanJoseph/blob/master/Img/Timing%20Diagram.jpeg)
-- Data Flow Diagram
+- Data Flow Diagram:
 ![DFD](Img/DFD.png)
 
 
