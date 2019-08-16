@@ -43,7 +43,7 @@ Every time an OTP is generated, an email is sent to the owner to inform him. Thi
 ![Screenshot of email](Img/email.png)
 
 ### 2.4: 2-Factor Authentication
-A user can unlock Lock Smart by scanning the unique QR code provided with the Lock Smart set. This QR code will redirect the user to a web page. They must log into the web page with their Lock Smart account. If their account has been successfully logged into, a One-Time Pin (OTP) will be sent to their email. The user must then enter the OTP to the field provided on the Lock Smart Web App. If the generated OTP matches the user-entered OTP, Lock Smart will unlock. 
+A user can unlock Lock Smart by logging into our web page. They must log into the web page with their Lock Smart account. If their account has been successfully logged into, a One-Time Pin (OTP) will be sent to their email. The user must then enter the OTP to the field provided on the Lock Smart Web App. If the generated OTP matches the user-entered OTP, Lock Smart will unlock. 
 
 
 ## 3: Network Diagram
