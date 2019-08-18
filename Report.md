@@ -56,7 +56,7 @@ As seen from the above 2 diagrams, the unlocking procedure for Lock Smart follow
 - Data Flow Diagram:
 ![DFD](Img/DFD.png)
 
-The Webserver and Database were set up through AWS Lambda and AWS RDS. An overview of the 2 services can be seen below:
+For our Webserver, we decided to use AWS RDS. An overview of the setup and configuration process is shown below:
 
 ![config](/Img/RDS/config.png)
 ![config2](/Img/RDS/config2.png)
