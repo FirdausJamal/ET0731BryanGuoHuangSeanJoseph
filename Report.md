@@ -69,7 +69,7 @@ The Webserver and Database were set up through AWS Lambda and AWS RDS. An overvi
 ![SQLconfig6](/Img/RDS/SQLconfig6.png)
 ![SQLconfig7](/Img/RDS/SQLconfig7.png)
 ![SQLconfig8](/Img/RDS/SQLconfig8.png)
-![phpMyAdminTable](/Img/RDS/phpMyadminTable.png)
+![phpMyAdminTable](/Img/RDS/phpMyAdminTable.png)
 ![RDS](/Img/RDS/RDS.png)
 ![RDS2](/Img/RDS/RDS2.png)
 
